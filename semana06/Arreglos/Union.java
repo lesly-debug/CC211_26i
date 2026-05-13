@@ -2,7 +2,7 @@ package Arreglos;
 
 import java.util.Scanner;
 
-public class Ejercicio5 {
+public class Union {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int[] a=new int[10];

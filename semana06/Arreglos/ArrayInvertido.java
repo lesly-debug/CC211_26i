@@ -2,7 +2,7 @@ package Arreglos;
 
 import java.util.Scanner;
 
-public class Ejercicio2 {
+public class ArrayInvertido {
     
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
