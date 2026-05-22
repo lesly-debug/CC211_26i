@@ -1,4 +1,4 @@
-package Parcial;
+package parcial;
 
 import java.util.Random;
 import java.util.Arrays;
