@@ -1,14 +1,15 @@
 import java.nio.file.*;
-import java.io.IOException;
+import java.io.*;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 class ProdMAntApp {
-    BD bd=new BD();
+    static BD bd=new BD();
     public static void main (String[] args) {
         bd.escribir(Utility.ranI(10));
         bd.leer();
         reportar();
     }
-    public void reportar(){
+    public static void reportar(){
         float maxPrecio=0;
         String nomMax="";
         System.out.println("Nombre\tCant.\tPrecio");
@@ -63,7 +64,7 @@ class BD {
         try{
             BufferedWriter bw=Files.newBufferedWriter(filePath);
             for(int i=0;i<=nReg;i++){
-                Producto p=new Producto("P"+i,Utility.RanI(100),Utility.RanF(50));
+                Producto p=new Producto("P"+i,Utility.ranI(100),Utility.ranF(50));
                 bw.write(p.toString());
                 bw.newLine();
             }
@@ -77,13 +78,14 @@ class BD {
         try{
             BufferedReader br=Files.newBufferedReader(filePath);
             String linea;
-            while((linea=br.readLine()!=null)){
+            while((linea=br.readLine())!=null){
                 String datos[]=linea.split("\t");
                 String nombre=datos[0];
                 int cantidad=Integer.parseInt(datos[1]);
-                float precio=Float.parseFloat(datos[2]);
+                String precioLimpio=datos[2].replace(",","");
+                float precio=Float.parseFloat(precioLimpio);
                 Producto p=new Producto(nombre,cantidad,precio);
-                productos.add();
+                productos.add(p);
             }
             br.close();
         }catch(IOException e){
